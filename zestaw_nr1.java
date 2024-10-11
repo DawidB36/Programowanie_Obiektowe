@@ -1,7 +1,4 @@
-// Online Java Compiler
-// Use this editor to write, compile and run your Java code online
-
-class HelloWorld {
+public class zestaw_nr1 {
     public static void main(String[] args) {
         //zad 1
         System.out.println("zad 1");
@@ -69,8 +66,8 @@ class HelloWorld {
         //zad 8
         System.out.println("zad 8");
         System.out.println("ASCII code of lower case characters is between "+(int) 'a'+" and "+(int) 'z'
-            +", upper case characters is between"+(int) 'A'+" and "+(int) 'Z'+", while numbers are between "
-            +(int) '0'+" and "+(int) '9'+".");
+                +", upper case characters is between "+(int) 'A'+" and "+(int) 'Z'+", while numbers are between "
+                +(int) '0'+" and "+(int) '9'+".");
         System.out.println("");
 
         //zad 9
@@ -94,7 +91,7 @@ class HelloWorld {
                 System.out.println("wodrze");
             }
             else {
-            System.out.print("wodrze ");};
+                System.out.print("wodrze ");};
         }
         System.out.println("");
 
