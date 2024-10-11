@@ -4,14 +4,31 @@ public class zestaw_nr2 {
     public static void main(String[] args) {
         //zad 1
         System.out.println("zad 1");
-        System.out.println((23.0+76) +" Float");
-        System.out.println((41*2.0+3)+" Float");
-        System.out.println((5-33)+" Int");
-        System.out.println((109%3)+" Int");
-        System.out.println((50/2)+" Int");
-        System.out.println((4|2)+" Byte");
-        System.out.println((3^5)+" Byte");
-        System.out.println((7&9)+" Byte");
+
+        Object variable1 = 23.0+76;
+        System.out.println("23.0+76 "+variable1.getClass().getSimpleName());
+
+        Object variable2 = 41*2.0+3;
+        System.out.println("41*2.0+3 "+variable2.getClass().getSimpleName());
+
+        Object variable3 = 5-33;
+        System.out.println("5-33 "+variable3.getClass().getSimpleName());
+
+        Object variable4 = 109%3;
+        System.out.println("109%3 "+variable4.getClass().getSimpleName());
+
+        Object variable5 = 50/2;
+        System.out.println("50/2 "+variable5.getClass().getSimpleName());
+
+        Object variable6 = 4|2;
+        System.out.println("4|2 "+variable6.getClass().getSimpleName());
+
+        Object variable7 = 3^5;
+        System.out.println("3^5 "+variable7.getClass().getSimpleName());
+
+        Object variable8 = 7&9;
+        System.out.println("7&9 "+variable8.getClass().getSimpleName());
+
         System.out.println("");
 
         //zad 2
