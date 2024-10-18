@@ -238,7 +238,7 @@ public class zestaw_nr3 {
                 System.out.print(" ");
             }
             for (j = 0; j <= i; j++) {
-                System.out.print(" " + silnia(i) / (silnia(i - j) * silnia(j)));
+                System.out.print(" " + dwumianNewtona(i, j));
             }
 
             System.out.println("");
