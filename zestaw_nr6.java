@@ -67,10 +67,12 @@ public class zestaw_nr6 {
     public static class Zamowienie {
         KoszykZakupowy koszyk;
         String statusZamowienia;
+        String platnosc;
 
-        public Zamowienie(KoszykZakupowy cart, String status) {
+        public Zamowienie(KoszykZakupowy cart, String status, String payment) {
             koszyk = cart;
             statusZamowienia = status;
+            platnosc = payment;
         }
 
         public void ustawStatusZamowienia(String status) {
@@ -80,6 +82,30 @@ public class zestaw_nr6 {
         public void wyswietlZamowienia() {
             koszyk.wyswietlZawartoscKoszyka();
             System.out.println(String.format("Status: %s", statusZamowienia));
+        }
+
+        public void finalizujZamowienie() {
+            if (platnosc == "Opłacone") {
+                statusZamowienia = "Gotowe do wysyłki"
+            }
+        }
+
+        public void zwrocProdukt(String name, int quantity) {
+            ArrayList<Produkt> temp = koszyk.listaProdukt;
+
+            if (temp.contains(name)) {
+                for(int i=0; i<temp.size(); i++) {
+                    if (temp.get(i).nazwa == name) {
+                        if (quantity <= temp.get(i).iloscNaMagazynie) {
+                            temp.get(i).iloscNaMagazynie - quantity;
+                        }
+                        else {
+                            temp.get(i).iloscNaMagazynie = 0;
+                        }
+                    }
+                }
+            }
+
         }
     }
 
@@ -133,9 +159,25 @@ public class zestaw_nr6 {
         public void wyswietlOferty() {
             System.out.println("Oferty sklepu:");
             for(int i = 0; i < produkty.size(); i++) {
-                System.out.println(String.format("Produkt: %s Cena: %.2f Ilość: %d", produkty.get(i).nazwa,
+                System.out.println(String.format("%s Cena: %.2f Ilość: %d", produkty.get(i).nazwa,
                         produkty.get(i).cena, produkty.get(i).iloscNaMagazynie));
             }
+        }
+    }
+
+    ///zad 6
+    public static class Platnosc {
+        double kwota;
+        String statusPlatnosci = "Do zapłaty";
+
+        public Platnosc(double price, String status) {
+            kwota = price;
+            statusPlatnosci = status;
+        }
+
+        public void zaplac() {
+            statusPlatnosci = "Opłacone";
+            kwota = 0;
         }
     }
 
@@ -193,12 +235,12 @@ public class zestaw_nr6 {
         ///zad 3
         System.out.println("Zadanie 3:");
 
-        Zamowienie zam1 = new Zamowienie(koszyk1, "Oczekiwanie");
+        Zamowienie zam1 = new Zamowienie(koszyk1, "Oczekiwanie na płatność");
 
         zam1.wyswietlZamowienia();
         System.out.println("");
 
-        zam1.ustawStatusZamowienia("Zapłacone");
+        zam1.ustawStatusZamowienia("Gotowe do wysyłki");
 
         zam1.wyswietlZamowienia();
         System.out.println("");
@@ -219,15 +261,15 @@ public class zestaw_nr6 {
 
         KoszykZakupowy koszyk3 = new KoszykZakupowy(listaProdukt3);
 
-        Zamowienie zam2 = new Zamowienie(koszyk2, "Ukradzione");
+        Zamowienie zam2 = new Zamowienie(koszyk2, "Gotowe do wysyłki");
 
-        Zamowienie zam3 = new Zamowienie(koszyk3, "Zapłacone za pieniądze czerwonego");
+        Zamowienie zam3 = new Zamowienie(koszyk3, "Oczekiwanie na płatność");
 
         ArrayList<Zamowienie> historia_mykel = new ArrayList<Zamowienie>();
         historia_mykel.add(zam1);
         historia_mykel.add(zam2);
 
-        Klient mykel = new Klient("Marek", "Mykelski", historia_mykel);
+        Klient mykel = new Klient("Mykel", "Mykelski", historia_mykel);
 
         mykel.dodajZamowienie(zam3);
 
@@ -250,5 +292,7 @@ public class zestaw_nr6 {
         biedronka.dodajProdukt(jablko_magazyn);
         biedronka.wyswietlOferty();
 
+        ///zad 6
+        
     }
 }
